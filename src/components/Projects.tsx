@@ -104,7 +104,7 @@ const Projects = () => {
                   {project.liveUrl && (
                     <a
                       href={project.liveUrl}
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors"
+                      className="bg-[#C778DD] hover:bg-[#B968CC] text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors"
                     >
                       <Image src="/icons/play.svg" alt="Live" width={16} height={16} className="filter invert" />
                       <span>Live</span>
@@ -149,7 +149,7 @@ const Projects = () => {
 
         {/* View More Button */}
         <div className="text-center mt-12">
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-colors">
+          <button className="bg-[#C778DD] hover:bg-[#B968CC] text-white px-8 py-3 rounded-lg font-medium transition-colors">
             View All Projects
           </button>
         </div>

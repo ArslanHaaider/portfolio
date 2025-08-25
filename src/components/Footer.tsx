@@ -60,7 +60,7 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-[#C778DD] rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-lg">P</span>
               </div>
               <span className="text-xl font-bold">Portfolio</span>
@@ -164,7 +164,7 @@ const Footer = () => {
       {/* Back to Top Button */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed bottom-8 right-8 w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg flex items-center justify-center transition-colors z-50"
+        className="fixed bottom-8 right-8 w-12 h-12 bg-[#C778DD] hover:bg-[#B968CC] text-white rounded-full shadow-lg flex items-center justify-center transition-colors z-50"
         aria-label="Back to top"
       >
         <svg
