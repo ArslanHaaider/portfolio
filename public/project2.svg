@@ -1,0 +1,16 @@
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#0f172a"/>
+  <rect x="50" y="50" width="500" height="300" rx="8" fill="#1e293b"/>
+  <rect x="70" y="70" width="460" height="60" rx="4" fill="#334155"/>
+  <rect x="90" y="85" width="80" height="30" rx="15" fill="#8b5cf6"/>
+  <rect x="180" y="85" width="80" height="30" rx="15" fill="#06b6d4"/>
+  <rect x="270" y="85" width="80" height="30" rx="15" fill="#10b981"/>
+  <rect x="70" y="150" width="460" height="180" rx="4" fill="#475569"/>
+  <path d="M100 250 L200 200 L300 220 L400 180 L500 190" stroke="#3b82f6" stroke-width="3" fill="none"/>
+  <circle cx="100" cy="250" r="4" fill="#3b82f6"/>
+  <circle cx="200" cy="200" r="4" fill="#3b82f6"/>
+  <circle cx="300" cy="220" r="4" fill="#3b82f6"/>
+  <circle cx="400" cy="180" r="4" fill="#3b82f6"/>
+  <circle cx="500" cy="190" r="4" fill="#3b82f6"/>
+  <text x="300" y="380" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="16">Analytics Dashboard</text>
+</svg>
