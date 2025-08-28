@@ -1,116 +1,97 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Media from './Media';
 
 const Hero = () => {
-  const socialLinks = [
-    {
-      name: 'Github',
-      url: 'https://github.com',
-      icon: '/icons/github.svg'
-    },
-    {
-      name: 'Figma', 
-      url: 'https://figma.com',
-      icon: '/icons/figma.svg'
-    },
-    {
-      name: 'Discord',
-      url: 'https://discord.com', 
-      icon: '/icons/discord.svg'
-    }
-  ];
-
   return (
     <section 
-      className="min-h-screen bg-[#282C33] text-white flex items-center" 
+      className="bg-[#282C33] text-white min-h-[423px] py-8 lg:py-0" 
       aria-label="Hero section"
     >
-      <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-          {/* Left Content */}
-          <div className="space-y-6 sm:space-y-8 order-2 lg:order-1">
-            <div>
-              <h1 className="text-[24px] sm:text-[28px] lg:text-[32px] font-semibold leading-[32px] sm:leading-[38px] lg:leading-[42px] mb-6 sm:mb-8">
-                Elias is a <span className="text-[#C778DD]">web designer</span> and <span className="text-[#C778DD]">front-end developer</span>
-              </h1>
-              <p className="text-[14px] sm:text-[16px] text-[#ABB2BF] leading-[22px] sm:leading-[25px] mb-6 sm:mb-8 max-w-md">
-                He crafts responsive websites where technologies meet creativity
-              </p>
-            </div>
+      <div className="relative w-full max-w-[1024px] mx-auto px-4 lg:px-0 lg:h-[423px]">
+        {/* Media Section - positioned on the left for desktop */}
+        <div className="hidden lg:block lg:absolute lg:left-[-200px] lg:top-[-70px]">
+          <Media />
+        </div>
+        
+        {/* Left Content Group */}
+        <div className="lg:absolute lg:left-0 lg:top-[74px] lg:w-[537px] lg:h-[227px] mb-8 lg:mb-0">
+          <div className="space-y-0">
+            <h1 className="text-[24px] sm:text-[28px] lg:text-[32px] font-medium leading-[32px] sm:leading-[38px] lg:leading-[42px] text-white mb-[24px] lg:mb-[32px] font-mono">
+              Elias is a web designer and front-end developer
+            </h1>
+            <p className="text-[14px] sm:text-[15px] lg:text-[16px] font-normal leading-[22px] sm:leading-[24px] lg:leading-[25px] text-[#ABB2BF] mb-[20px] lg:mb-[24px] max-w-[463px] font-mono">
+              He crafts responsive websites where technologies meet creativity
+            </p>
             
             {/* CTA Button */}
-            <div>
+            <div className="mt-[20px] lg:mt-[24px]">
               <Link 
                 href="#contact" 
-                className="inline-block bg-transparent border border-[#C778DD] text-[#C778DD] px-3 sm:px-4 py-2 text-[14px] sm:text-[16px] font-medium hover:bg-[#C778DD] hover:text-[#282C33] transition-colors focus:ring-2 focus:ring-[#C778DD] focus:ring-offset-2 focus:ring-offset-[#282C33]"
-                aria-label="Contact Elias"
+                className="inline-flex items-center gap-[8px] lg:gap-[10px] px-[12px] lg:px-[16px] py-[6px] lg:py-[8px] border border-[#C778DD] text-[#C778DD] text-[14px] lg:text-[16px] font-medium leading-[18px] lg:leading-[21px] hover:bg-[#C778DD] hover:text-white focus:bg-[#C778DD] focus:text-white focus:outline-none focus:ring-2 focus:ring-[#C778DD] focus:ring-offset-2 focus:ring-offset-[#282C33] transition-colors font-mono"
+                aria-label="Contact Elias for web design and development services"
               >
                 Contact me!!
               </Link>
             </div>
           </div>
-
-          {/* Right Content - Profile Image */}
-          <div className="flex justify-center lg:justify-end relative order-1 lg:order-2">
-            {/* Main Profile Image */}
-            <div className="relative max-w-[280px] sm:max-w-[314px]">
-              <Image
-                src="/hero-profile-6942b3.png"
-                alt="Portrait of Elias, web designer and front-end developer"
-                width={314}
-                height={266}
-                className="object-cover w-full h-auto"
-                priority
-                sizes="(max-width: 640px) 280px, 314px"
-              />
-              
-              {/* Decorative dots - positioned as in Figma */}
-              <div className="absolute top-12 sm:top-16 right-[-40px] sm:right-[-60px] w-12 sm:w-16 h-12 sm:h-16 opacity-50" aria-hidden="true">
-                <div className="grid grid-cols-4 gap-1">
-                  {Array.from({ length: 16 }).map((_, i) => (
-                    <div key={i} className="w-1 h-1 bg-[#ABB2BF] square"></div>
-                  ))}
-                </div>
-              </div>
-              
-              {/* Status indicator */}
-              <div className="absolute bottom-[-15px] sm:bottom-[-20px] left-1 sm:left-2 bg-[#282C33] border border-[#ABB2BF] px-2 py-1 text-[14px] sm:text-[16px] max-w-[250px] sm:max-w-none">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <div className="w-3 sm:w-4 h-3 sm:h-4 bg-[#C778DD] square flex-shrink-0" aria-hidden="true"></div>
-                  <span className="text-[#ABB2BF] text-[12px] sm:text-[14px]">Currently working on </span>
-                  <span className="text-white font-semibold text-[12px] sm:text-[14px]">Portfolio</span>
-                </div>
-              </div>
-            </div>
+          
+          {/* Mobile Media Section */}
+          <div className="lg:hidden">
+            <Media />
           </div>
         </div>
 
-        {/* Social Links */}
-        <div className="mt-12 sm:mt-16">
-          <div className="flex items-start gap-1">
-            <div className="w-1 h-[120px] sm:h-[191px] bg-[#ABB2BF]" aria-hidden="true"></div>
-            <nav className="flex flex-col gap-2 ml-2" aria-label="Social media links">
-              {socialLinks.map((social) => (
-                <Link
-                  key={social.name}
-                  href={social.url}
-                  className="w-6 sm:w-8 h-6 sm:h-8 flex items-center justify-center hover:scale-110 transition-transform focus:scale-110 focus:outline-none focus:ring-2 focus:ring-[#C778DD] focus:ring-offset-2 focus:ring-offset-[#282C33] rounded"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Visit ${social.name} profile`}
-                >
-                  <Image
-                    src={social.icon}
-                    alt={`${social.name} icon`}
-                    width={20}
-                    height={20}
-                    className="filter brightness-0 invert opacity-70 hover:opacity-100 transition-opacity w-4 sm:w-5 h-4 sm:h-5"
-                  />
-                </Link>
-              ))}
-            </nav>
+        {/* Right Content Group */}
+        <div className="relative lg:absolute lg:left-[555px] lg:top-0 lg:w-[469px] lg:h-[386px] flex justify-center lg:justify-start">
+          {/* Logo */}
+          <div className="hidden lg:block lg:absolute lg:left-0 lg:top-[84px] lg:w-[155px] lg:h-[155px]">
+            <svg width="155" height="155" viewBox="0 0 155 155" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g stroke="#C778DD" strokeWidth="1" fill="#FFFFFF">
+                <rect x="0" y="38.75" width="38.75" height="38.75"/>
+                <rect x="0" y="77.5" width="38.75" height="38.75"/>
+                <rect x="0" y="116.25" width="38.75" height="38.75"/>
+                <rect x="38.75" y="38.75" width="38.75" height="38.75"/>
+                <rect x="38.75" y="116.25" width="38.75" height="38.75"/>
+                <rect x="77.5" y="0" width="38.75" height="38.75"/>
+                <rect x="77.5" y="38.75" width="38.75" height="38.75"/>
+                <rect x="77.5" y="77.5" width="38.75" height="38.75"/>
+                <rect x="77.5" y="116.25" width="38.75" height="38.75"/>
+                <rect x="116.25" y="116.25" width="38.75" height="38.75"/>
+              </g>
+            </svg>
           </div>
+          
+          {/* Profile Image Container */}
+          <div className="relative w-[280px] sm:w-[350px] lg:w-[457px] h-[240px] sm:h-[300px] lg:h-[386px] lg:absolute lg:left-[12px] lg:top-0">
+            <Image
+              src="/hero-profile-6942b3.png"
+              alt="Portrait of Elias, web designer and front-end developer"
+              width={457}
+              height={386}
+              className="object-cover w-full h-full rounded-lg lg:rounded-none"
+              priority
+              sizes="(max-width: 640px) 280px, (max-width: 1024px) 350px, 457px"
+            />
+            
+            {/* Decorative Dots - responsive positioning */}
+            <div className="absolute right-[-20px] sm:right-[-30px] lg:right-[88px] bottom-[20px] sm:bottom-[30px] lg:bottom-[140px] w-[60px] sm:w-[70px] lg:w-[84px] h-[60px] sm:h-[70px] lg:h-[84px] flex flex-col justify-between gap-[12px] sm:gap-[14px] lg:gap-[16px]" aria-hidden="true">
+              {Array.from({ length: 5 }).map((_, rowIndex) => (
+                <div key={rowIndex} className="flex justify-between gap-[12px] sm:gap-[14px] lg:gap-[16px]">
+                  {Array.from({ length: 5 }).map((_, colIndex) => (
+                    <div key={colIndex} className="w-[3px] sm:w-[3.5px] lg:w-[4px] h-[3px] sm:h-[3.5px] lg:h-[4px] bg-[#ABB2BF]"></div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        
+        {/* Status Indicator - responsive */}
+        <div className="relative lg:absolute lg:left-[586px] lg:top-[386px] w-full max-w-[402px] lg:w-[402px] bg-[#282C33] border border-[#ABB2BF] px-[6px] lg:px-[8px] py-[6px] lg:py-[8px] flex items-center gap-[8px] lg:gap-[10px] mt-4 lg:mt-0 mx-auto lg:mx-0">
+          <div className="w-[12px] lg:w-[16px] h-[12px] lg:h-[16px] bg-[#C778DD] flex-shrink-0" aria-hidden="true"></div>
+          <span className="text-[#ABB2BF] text-[14px] lg:text-[16px] leading-[18px] lg:leading-[21px] font-mono truncate">Currently working on Portfolio</span>
         </div>
       </div>
     </section>
