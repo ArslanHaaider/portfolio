@@ -24,7 +24,7 @@ const Support = () => {
   };
 
   return (
-    <section className="bg-gray-50 py-20 px-6">
+    <section className="py-20 px-6">
       <div className="max-w-4xl mx-auto text-center">
         {/* Section Header */}
         <div className="mb-12">

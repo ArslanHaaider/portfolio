@@ -45,7 +45,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="bg-black text-white py-20 px-6">
+    <section id="contact" className="text-white py-20 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Left Side - Contact Info */}
