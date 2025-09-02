@@ -55,15 +55,15 @@ const Projects = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {projects.map((project) => (
-            <div key={project.id} className="w-[330.58px] border border-[#ABB2BF] flex flex-col bg-[#282C33]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
+          {projects.map((project, index) => (
+            <div key={project.id} className={`w-full h-full border border-[#ABB2BF] flex flex-col bg-[#282C33] ${index % 3 === 1 ? 'lg:mt-4' : ''}`}>
               <img 
                 src={project.image} 
                 alt={project.title}
                 className="w-full h-[201px] object-cover"
               />
-              <div className="border-t border-[#ABB2BF] p-4">
+              <div className="border-t border-[#ABB2BF] p-4 flex flex-col flex-1">
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag, index) => (
                     <span 
@@ -75,11 +75,11 @@ const Projects = () => {
                   ))}
                 </div>
                 
-                <div className="border-t border-[#ABB2BF] pt-4">
+                <div className="border-t border-[#ABB2BF] pt-4 flex flex-col flex-1">
                   <h3 className="text-2xl font-medium text-white mb-4 font-fira-code">{project.title}</h3>
                   <p className="text-[#ABB2BF] mb-4 text-base font-normal font-fira-code leading-[1.312em]">{project.description}</p>
                   
-                  <div className="flex gap-4">
+                  <div className="flex gap-4 mt-auto">
                     {project.liveUrl && (
                       <a 
                         href={project.liveUrl}

@@ -6,7 +6,7 @@ import Media from './Media';
 const Hero = () => {
   return (
     <section 
-      className="bg-[#282C33] text-white min-h-[423px] py-8 lg:py-0" 
+      className="bg-[#2b2f36] text-white min-h-[423px] py-8 lg:py-0" 
       aria-label="Hero section"
     >
       <div className="relative w-full max-w-[1024px] mx-auto px-4 lg:px-0 lg:h-[423px]">
