@@ -55,19 +55,6 @@ const Header = () => {
             <span className="text-[#C778DD] font-normal">#</span>
             <span className="text-[#ABB2BF] font-normal">contacts</span>
           </Link>
-          
-          {/* Language Switcher */}
-          <div className="flex items-center gap-1">
-            <span className="text-[#ABB2BF] font-semibold text-base leading-[1.312em]" style={{ fontFamily: 'Fira Code' }}>
-              EN
-            </span>
-            <div className="w-[10px] h-[5px] relative">
-              <svg width="10" height="5" viewBox="0 0 10 5" fill="none">
-                <line x1="0" y1="0" x2="5" y2="5" stroke="#ABB2BF" strokeWidth="2"/>
-                <line x1="5" y1="0" x2="10" y2="5" stroke="#ABB2BF" strokeWidth="2"/>
-              </svg>
-            </div>
-          </div>
         </nav>
       </div>
     </header>
