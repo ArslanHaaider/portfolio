@@ -67,7 +67,7 @@ const Footer = () => {
             </div>
             <p className="text-gray-400 mb-6 max-w-md">
               A passionate developer creating innovative solutions and sharing knowledge 
-              with the community. Let's build something amazing together.
+              with the community. Let&apos;s build something amazing together.
             </p>
             
             {/* Social Links */}

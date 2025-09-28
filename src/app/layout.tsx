@@ -24,9 +24,7 @@ export default function RootLayout({
         className={`${firaCode.variable} antialiased`}
         style={{ fontFamily: 'Fira Code, monospace' }}
       >
-        <div className="mx-auto w-[90vw] max-w-[1320px] px-4 md:px-6">
-          {children}
-        </div>
+        {children}
       </body>
     </html>
   );

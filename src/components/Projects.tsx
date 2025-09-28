@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 
 interface Project {
   id: number;
@@ -57,7 +56,7 @@ const Projects = () => {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
           {projects.map((project, index) => (
-            <div key={project.id} className={`w-full h-full border border-[#ABB2BF] flex flex-col bg-[#282C33] ${index % 3 === 1 ? 'lg:mt-4' : ''}`}>
+            <div key={project.id} className={`w-full h-full border border-[#ABB2BF] flex flex-col bg-[#282C33] ${index % 3 === 1 ? 'lg:mt-8' : ''}`}>
               <img 
                 src={project.image} 
                 alt={project.title}

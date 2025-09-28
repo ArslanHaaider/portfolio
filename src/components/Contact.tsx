@@ -37,7 +37,7 @@ const Contact = () => {
       await new Promise(resolve => setTimeout(resolve, 1000));
       setSubmitStatus('success');
       setFormData({ name: '', email: '', title: '', message: '' });
-    } catch (error) {
+    } catch (_error) {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -52,11 +52,11 @@ const Contact = () => {
           <div className="space-y-8">
             <div>
               <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-                Let's Work Together
+                Let&apos;s Work Together
               </h2>
               <p className="text-xl text-gray-300 mb-8">
-                Have a project in mind? I'd love to hear about it. 
-                Let's discuss how we can bring your ideas to life.
+                Have a project in mind? I&apos;d love to hear about it. 
+                Let&apos;s discuss how we can bring your ideas to life.
               </p>
             </div>
 
@@ -211,7 +211,7 @@ const Contact = () => {
               {/* Status Messages */}
               {submitStatus === 'success' && (
                 <div className="text-green-400 text-center py-2">
-                  ✓ Message sent successfully! I'll get back to you soon.
+                  ✓ Message sent successfully! I&apos;ll get back to you soon.
                 </div>
               )}
               {submitStatus === 'error' && (
