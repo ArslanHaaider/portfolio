@@ -2,8 +2,12 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion, useReducedMotion } from 'framer-motion';
+import AnimatedWrapper from './AnimatedWrapper';
+import { staggerContainer, staggerItem, cardVariants } from '@/lib/animations';
 
 const Footer = () => {
+  const prefersReducedMotion = useReducedMotion();
   const socialLinks = [
     {
       name: 'GitHub',
@@ -53,135 +57,307 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="text-white">
-      <div className="max-w-7xl mx-auto px-6 py-12">
+    <AnimatedWrapper>
+      <motion.footer 
+        className="text-white"
+        variants={prefersReducedMotion ? {} : staggerContainer}
+        initial={prefersReducedMotion ? false : "hidden"}
+        animate={prefersReducedMotion ? false : "visible"}
+      >
+        <motion.div 
+          className="max-w-7xl mx-auto px-6 py-12"
+          variants={prefersReducedMotion ? {} : staggerContainer}
+        >
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8"
+          variants={prefersReducedMotion ? {} : staggerContainer}
+        >
           {/* Brand Section */}
-          <div className="lg:col-span-2">
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 bg-[#C778DD] rounded-lg flex items-center justify-center">
+          <motion.div 
+            className="lg:col-span-2"
+            variants={prefersReducedMotion ? {} : staggerItem}
+          >
+            <motion.div 
+              className="flex items-center space-x-3 mb-4"
+              initial={prefersReducedMotion ? {} : { opacity: 0, x: -20 }}
+              animate={prefersReducedMotion ? {} : { opacity: 1, x: 0 }}
+              transition={prefersReducedMotion ? {} : { delay: 0.1 }}
+            >
+              <motion.div 
+                className="w-10 h-10 bg-[#C778DD] rounded-lg flex items-center justify-center"
+                whileHover={prefersReducedMotion ? {} : { 
+                  scale: 1.1,
+                  rotate: 5,
+                  boxShadow: "0 10px 25px rgba(199, 120, 221, 0.4)"
+                }}
+                transition={prefersReducedMotion ? {} : { type: "spring", stiffness: 300 }}
+              >
                 <span className="text-white font-bold text-lg">P</span>
-              </div>
-              <span className="text-xl font-bold">Portfolio</span>
-            </div>
-            <p className="text-gray-400 mb-6 max-w-md">
+              </motion.div>
+              <motion.span 
+                className="text-xl font-bold"
+                initial={prefersReducedMotion ? {} : { opacity: 0, y: 10 }}
+                animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
+                transition={prefersReducedMotion ? {} : { delay: 0.2 }}
+              >
+                Portfolio
+              </motion.span>
+            </motion.div>
+            <motion.p 
+              className="text-gray-400 mb-6 max-w-md"
+              initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
+              animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
+              transition={prefersReducedMotion ? {} : { delay: 0.3 }}
+            >
               A passionate developer creating innovative solutions and sharing knowledge 
               with the community. Let&apos;s build something amazing together.
-            </p>
+            </motion.p>
             
             {/* Social Links */}
-            <div className="flex space-x-4">
+            <motion.div 
+              className="flex space-x-4"
+              variants={prefersReducedMotion ? {} : staggerContainer}
+              initial={prefersReducedMotion ? false : "hidden"}
+              animate={prefersReducedMotion ? false : "visible"}
+            >
               {socialLinks.map((social, index) => (
-                <Link
+                <motion.div
                   key={index}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition-colors group"
+                  variants={prefersReducedMotion ? {} : staggerItem}
                 >
-                  <Image
-                    src={social.icon}
-                    alt={social.name}
-                    width={20}
-                    height={20}
-                    className="filter brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all"
-                  />
-                </Link>
+                  <motion.a
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition-colors group"
+                    whileHover={prefersReducedMotion ? {} : { 
+                      scale: 1.1,
+                      y: -2,
+                      backgroundColor: "#C778DD"
+                    }}
+                    whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
+                    transition={prefersReducedMotion ? {} : { type: "spring", stiffness: 300 }}
+                  >
+                    <motion.div
+                      whileHover={prefersReducedMotion ? {} : { rotate: 360 }}
+                      transition={prefersReducedMotion ? {} : { duration: 0.6 }}
+                    >
+                      <Image
+                        src={social.icon}
+                        alt={social.name}
+                        width={20}
+                        height={20}
+                        className="filter brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all"
+                      />
+                    </motion.div>
+                  </motion.a>
+                </motion.div>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
+          <motion.div
+            variants={prefersReducedMotion ? {} : staggerItem}
+          >
+            <motion.h3 
+              className="text-lg font-semibold mb-4"
+              initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
+              animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
+              transition={prefersReducedMotion ? {} : { delay: 0.4 }}
+            >
+              Quick Links
+            </motion.h3>
+            <motion.ul 
+              className="space-y-2"
+              variants={prefersReducedMotion ? {} : staggerContainer}
+              initial={prefersReducedMotion ? false : "hidden"}
+              animate={prefersReducedMotion ? false : "visible"}
+            >
               {quickLinks.map((link, index) => (
-                <li key={index}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors"
+                <motion.li 
+                  key={index}
+                  variants={prefersReducedMotion ? {} : staggerItem}
+                >
+                  <motion.div
+                    whileHover={prefersReducedMotion ? {} : { x: 5 }}
+                    transition={prefersReducedMotion ? {} : { type: "spring", stiffness: 300 }}
                   >
-                    {link.name}
-                  </Link>
-                </li>
+                    <Link
+                      href={link.href}
+                      className="text-gray-400 hover:text-white transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.div>
+                </motion.li>
               ))}
-            </ul>
-          </div>
+            </motion.ul>
+          </motion.div>
 
           {/* Contact Info */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Get in Touch</h3>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <Image
-                  src="/icons/email.svg"
-                  alt="Email"
-                  width={16}
-                  height={16}
-                  className="filter brightness-0 invert"
-                />
+          <motion.div
+            variants={prefersReducedMotion ? {} : staggerItem}
+          >
+            <motion.h3 
+              className="text-lg font-semibold mb-4"
+              initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
+              animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
+              transition={prefersReducedMotion ? {} : { delay: 0.5 }}
+            >
+              Get in Touch
+            </motion.h3>
+            <motion.div 
+              className="space-y-3"
+              variants={prefersReducedMotion ? {} : staggerContainer}
+              initial={prefersReducedMotion ? false : "hidden"}
+              animate={prefersReducedMotion ? false : "visible"}
+            >
+              <motion.div 
+                className="flex items-center space-x-3"
+                variants={prefersReducedMotion ? {} : staggerItem}
+                whileHover={prefersReducedMotion ? {} : { x: 5 }}
+                transition={prefersReducedMotion ? {} : { type: "spring", stiffness: 300 }}
+              >
+                <motion.div
+                  whileHover={prefersReducedMotion ? {} : { scale: 1.2, rotate: 10 }}
+                  transition={prefersReducedMotion ? {} : { type: "spring", stiffness: 300 }}
+                >
+                  <Image
+                    src="/icons/email.svg"
+                    alt="Email"
+                    width={16}
+                    height={16}
+                    className="filter brightness-0 invert"
+                  />
+                </motion.div>
                 <span className="text-gray-400">hello@portfolio.com</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Image
-                  src="/icons/landmark.svg"
-                  alt="Location"
-                  width={16}
-                  height={16}
-                  className="filter brightness-0 invert"
-                />
+              </motion.div>
+              <motion.div 
+                className="flex items-center space-x-3"
+                variants={prefersReducedMotion ? {} : staggerItem}
+                whileHover={prefersReducedMotion ? {} : { x: 5 }}
+                transition={prefersReducedMotion ? {} : { type: "spring", stiffness: 300 }}
+              >
+                <motion.div
+                  whileHover={prefersReducedMotion ? {} : { scale: 1.2, rotate: -10 }}
+                  transition={prefersReducedMotion ? {} : { type: "spring", stiffness: 300 }}
+                >
+                  <Image
+                    src="/icons/landmark.svg"
+                    alt="Location"
+                    width={16}
+                    height={16}
+                    className="filter brightness-0 invert"
+                  />
+                </motion.div>
                 <span className="text-gray-400">Remote, Worldwide</span>
-              </div>
-            </div>
-          </div>
-        </div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
 
         {/* Divider */}
-        <div className="border-t border-gray-800 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        <motion.div 
+          className="border-t border-gray-800 pt-8"
+          variants={prefersReducedMotion ? {} : staggerItem}
+          initial={prefersReducedMotion ? {} : { opacity: 0, scaleX: 0 }}
+          animate={prefersReducedMotion ? {} : { opacity: 1, scaleX: 1 }}
+          transition={prefersReducedMotion ? {} : { delay: 0.6, duration: 0.8 }}
+        >
+          <motion.div 
+            className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
+            variants={prefersReducedMotion ? {} : staggerContainer}
+            initial={prefersReducedMotion ? false : "hidden"}
+            animate={prefersReducedMotion ? false : "visible"}
+          >
             {/* Copyright */}
-            <div className="text-gray-400 text-sm">
+            <motion.div 
+              className="text-gray-400 text-sm"
+              variants={prefersReducedMotion ? {} : staggerItem}
+            >
               © {currentYear} Portfolio. All rights reserved.
-            </div>
+            </motion.div>
 
             {/* Additional Links */}
-            <div className="flex space-x-6 text-sm">
-              <Link href="#privacy" className="text-gray-400 hover:text-white transition-colors">
-                Privacy Policy
-              </Link>
-              <Link href="#terms" className="text-gray-400 hover:text-white transition-colors">
-                Terms of Service
-              </Link>
-              <Link href="#cookies" className="text-gray-400 hover:text-white transition-colors">
-                Cookie Policy
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
+            <motion.div 
+              className="flex space-x-6 text-sm"
+              variants={prefersReducedMotion ? {} : staggerContainer}
+            >
+              <motion.div variants={prefersReducedMotion ? {} : staggerItem}>
+                <motion.div
+                  whileHover={prefersReducedMotion ? {} : { y: -2 }}
+                  transition={prefersReducedMotion ? {} : { type: "spring", stiffness: 300 }}
+                >
+                  <Link href="#privacy" className="text-gray-400 hover:text-white transition-colors">
+                    Privacy Policy
+                  </Link>
+                </motion.div>
+              </motion.div>
+              <motion.div variants={prefersReducedMotion ? {} : staggerItem}>
+                <motion.div
+                  whileHover={prefersReducedMotion ? {} : { y: -2 }}
+                  transition={prefersReducedMotion ? {} : { type: "spring", stiffness: 300 }}
+                >
+                  <Link href="#terms" className="text-gray-400 hover:text-white transition-colors">
+                    Terms of Service
+                  </Link>
+                </motion.div>
+              </motion.div>
+              <motion.div variants={prefersReducedMotion ? {} : staggerItem}>
+                <motion.div
+                  whileHover={prefersReducedMotion ? {} : { y: -2 }}
+                  transition={prefersReducedMotion ? {} : { type: "spring", stiffness: 300 }}
+                >
+                  <Link href="#cookies" className="text-gray-400 hover:text-white transition-colors">
+                    Cookie Policy
+                  </Link>
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
 
       {/* Back to Top Button */}
-      <button
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed bottom-8 right-8 w-12 h-12 bg-[#C778DD] hover:bg-[#B968CC] text-white rounded-full shadow-lg flex items-center justify-center transition-colors z-50"
-        aria-label="Back to top"
+      <motion.div 
+        className="fixed bottom-8 right-8 z-50"
+        initial={prefersReducedMotion ? {} : { opacity: 0, scale: 0 }}
+        animate={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
+        transition={prefersReducedMotion ? {} : { delay: 1, type: "spring", stiffness: 300 }}
       >
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
+        <motion.button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="w-12 h-12 bg-[#C778DD] hover:bg-[#B968CC] text-white rounded-full shadow-lg flex items-center justify-center transition-colors"
+          aria-label="Back to top"
+          whileHover={prefersReducedMotion ? {} : { 
+            scale: 1.1, 
+            boxShadow: "0 10px 25px rgba(199, 120, 221, 0.3)",
+            y: -2
+          }}
+          whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
+          transition={prefersReducedMotion ? {} : { type: "spring", stiffness: 300 }}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M5 10l7-7m0 0l7 7m-7-7v18"
-          />
-        </svg>
-      </button>
-    </footer>
+          <motion.svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            whileHover={prefersReducedMotion ? {} : { y: -2 }}
+            transition={prefersReducedMotion ? {} : { type: "spring", stiffness: 400 }}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M5 10l7-7m0 0l7 7m-7-7v18"
+            />
+          </motion.svg>
+        </motion.button>
+      </motion.div>
+    </motion.footer>
+    </AnimatedWrapper>
   );
 };
 

@@ -1,4 +1,10 @@
+'use client';
+
 import React from 'react';
+import { motion } from 'framer-motion';
+import AnimatedWrapper from './AnimatedWrapper';
+import { staggerContainer, staggerItem, cardVariants } from '@/lib/animations';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 interface Project {
   id: number;
@@ -11,6 +17,8 @@ interface Project {
 }
 
 const Projects = () => {
+  const prefersReducedMotion = useReducedMotion();
+  
   const projects: Project[] = [
     {
       id: 1,
@@ -42,78 +50,146 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 px-6">
-      <div className="max-w-7xl mx-auto">
+    <AnimatedWrapper animation="scroll" className="py-20 px-6">
+      <motion.section 
+        id="projects" 
+        className="max-w-7xl mx-auto"
+        variants={prefersReducedMotion ? {} : staggerContainer}
+        initial={prefersReducedMotion ? false : "hidden"}
+        animate={prefersReducedMotion ? false : "visible"}
+      >
         {/* Section Header */}
-        <div className="mb-16 flex items-center">
+        <motion.div 
+          className="mb-16 flex items-center"
+          variants={prefersReducedMotion ? {} : staggerItem}
+        >
           <h2 className="text-[32px] font-medium font-fira-code leading-[1.312em] flex items-center">
             <span className="text-[#C778DD]">#</span>
             <span className="text-white ml-1">projects</span>
           </h2>
           <div className="ml-4 h-[1px] bg-[#C778DD] flex-1 max-w-[536.26px]"></div>
-        </div>
+        </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr"
+          variants={prefersReducedMotion ? {} : staggerContainer}
+          initial={prefersReducedMotion ? false : "hidden"}
+          animate={prefersReducedMotion ? false : "visible"}
+        >
           {projects.map((project, index) => (
-            <div key={project.id} className={`w-full h-full border border-[#ABB2BF] flex flex-col bg-[#282C33] ${index % 3 === 1 ? 'lg:mt-8' : ''}`}>
-              <img 
+            <motion.div 
+              key={project.id} 
+              className={`w-full h-full border border-[#ABB2BF] flex flex-col bg-[#282C33] ${index % 3 === 1 ? 'lg:mt-8' : ''}`}
+              variants={prefersReducedMotion ? {} : cardVariants}
+              whileHover={prefersReducedMotion ? {} : { 
+                y: -8, 
+                boxShadow: "0 20px 40px rgba(199, 120, 221, 0.15)",
+                transition: { duration: 0.3 }
+              }}
+            >
+              <motion.img 
                 src={project.image} 
                 alt={project.title}
                 className="w-full h-[201px] object-cover"
+                initial={prefersReducedMotion ? {} : { scale: 1.1 }}
+                animate={prefersReducedMotion ? {} : { scale: 1 }}
+                transition={prefersReducedMotion ? {} : { duration: 0.6 }}
               />
               <div className="border-t border-[#ABB2BF] p-4 flex flex-col flex-1">
-                <div className="flex flex-wrap gap-2 mb-4">
+                <motion.div 
+                  className="flex flex-wrap gap-2 mb-4"
+                  variants={prefersReducedMotion ? {} : staggerContainer}
+                  initial={prefersReducedMotion ? false : "hidden"}
+                  animate={prefersReducedMotion ? false : "visible"}
+                >
                   {project.tags.map((tag, index) => (
-                    <span 
+                    <motion.span 
                       key={index}
                       className="text-[#ABB2BF] text-base font-fira-code leading-[1.312em]"
+                      variants={prefersReducedMotion ? {} : staggerItem}
                     >
                       {tag}
-                    </span>
+                    </motion.span>
                   ))}
-                </div>
+                </motion.div>
                 
                 <div className="border-t border-[#ABB2BF] pt-4 flex flex-col flex-1">
-                  <h3 className="text-2xl font-medium text-white mb-4 font-fira-code">{project.title}</h3>
-                  <p className="text-[#ABB2BF] mb-4 text-base font-normal font-fira-code leading-[1.312em]">{project.description}</p>
+                  <motion.h3 
+                    className="text-2xl font-medium text-white mb-4 font-fira-code"
+                    initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
+                    animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
+                    transition={prefersReducedMotion ? {} : { delay: 0.2 }}
+                  >
+                    {project.title}
+                  </motion.h3>
+                  <motion.p 
+                    className="text-[#ABB2BF] mb-4 text-base font-normal font-fira-code leading-[1.312em]"
+                    initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
+                    animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
+                    transition={prefersReducedMotion ? {} : { delay: 0.3 }}
+                  >
+                    {project.description}
+                  </motion.p>
                   
-                  <div className="flex gap-4 mt-auto">
+                  <motion.div 
+                    className="flex gap-4 mt-auto"
+                    initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
+                    animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
+                    transition={prefersReducedMotion ? {} : { delay: 0.4 }}
+                  >
                     {project.liveUrl && (
-                      <a 
+                      <motion.a 
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="px-4 py-2 border border-[#C778DD] text-white text-base font-medium font-fira-code leading-[1.312em] hover:bg-[#C778DD] hover:bg-opacity-20 transition-colors"
+                        whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
+                        whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
                       >
                         Live &lt;~&gt;
-                      </a>
+                      </motion.a>
                     )}
                     {project.githubUrl && (
-                      <a 
+                      <motion.a 
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="px-4 py-2 border border-[#ABB2BF] text-[#ABB2BF] text-base font-medium font-fira-code leading-[1.312em] hover:bg-[#ABB2BF] hover:bg-opacity-20 transition-colors"
+                        whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
+                        whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
                       >
                         Cached &gt;=
-                      </a>
+                      </motion.a>
                     )}
-                  </div>
+                  </motion.div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* View More Button */}
-        <div className="text-center mt-12">
-          <button className="bg-[#C778DD] hover:bg-[#B968CC] text-white px-8 py-3 rounded-lg font-medium transition-colors">
+        <motion.div 
+          className="text-center mt-12"
+          variants={prefersReducedMotion ? {} : staggerItem}
+          initial={prefersReducedMotion ? false : "hidden"}
+          animate={prefersReducedMotion ? false : "visible"}
+          transition={prefersReducedMotion ? {} : { delay: 0.6 }}
+        >
+          <motion.button 
+            className="bg-[#C778DD] hover:bg-[#B968CC] text-white px-8 py-3 rounded-lg font-medium transition-colors"
+            whileHover={prefersReducedMotion ? {} : { 
+              scale: 1.05,
+              boxShadow: "0 10px 30px rgba(199, 120, 221, 0.3)"
+            }}
+            whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
+          >
             View All Projects
-          </button>
-        </div>
-      </div>
-    </section>
+          </motion.button>
+        </motion.div>
+      </motion.section>
+    </AnimatedWrapper>
   );
 };
 

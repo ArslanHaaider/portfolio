@@ -1,13 +1,24 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import Media from './Media';
+import AnimatedWrapper from './AnimatedWrapper';
+import { heroVariants, staggerContainer, staggerItem, scaleVariants } from '@/lib/animations';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 const Hero = () => {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
-    <section 
+    <motion.section 
       className="bg-[#2b2f36] text-white min-h-[423px] py-8 lg:py-0" 
       aria-label="Hero section"
+      variants={prefersReducedMotion ? {} : heroVariants}
+      initial={prefersReducedMotion ? false : "hidden"}
+      animate={prefersReducedMotion ? false : "visible"}
     >
       <div className="relative w-full max-w-[1024px] mx-auto px-4 lg:px-0 lg:h-[423px]">
         {/* Media Section - positioned on the left for desktop */}
@@ -16,17 +27,31 @@ const Hero = () => {
         </div>
         
         {/* Left Content Group */}
-        <div className="lg:absolute lg:left-0 lg:top-[74px] lg:w-[537px] lg:h-[227px] mb-8 lg:mb-0">
+        <motion.div 
+          className="lg:absolute lg:left-0 lg:top-[74px] lg:w-[537px] lg:h-[227px] mb-8 lg:mb-0"
+          variants={prefersReducedMotion ? {} : staggerContainer}
+          initial={prefersReducedMotion ? false : "hidden"}
+          animate={prefersReducedMotion ? false : "visible"}
+        >
           <div className="space-y-0">
-            <h1 className="text-[24px] sm:text-[28px] lg:text-[32px] font-medium leading-[32px] sm:leading-[38px] lg:leading-[42px] text-white mb-[24px] lg:mb-[32px] font-mono">
+            <motion.h1 
+              className="text-[24px] sm:text-[28px] lg:text-[32px] font-medium leading-[32px] sm:leading-[38px] lg:leading-[42px] text-white mb-[24px] lg:mb-[32px] font-mono"
+              variants={prefersReducedMotion ? {} : staggerItem}
+            >
               Elias is a web designer and front-end developer
-            </h1>
-            <p className="text-[14px] sm:text-[15px] lg:text-[16px] font-normal leading-[22px] sm:leading-[24px] lg:leading-[25px] text-[#ABB2BF] mb-[20px] lg:mb-[24px] max-w-[463px] font-mono">
+            </motion.h1>
+            <motion.p 
+              className="text-[14px] sm:text-[15px] lg:text-[16px] font-normal leading-[22px] sm:leading-[24px] lg:leading-[25px] text-[#ABB2BF] mb-[20px] lg:mb-[24px] max-w-[463px] font-mono"
+              variants={prefersReducedMotion ? {} : staggerItem}
+            >
               He crafts responsive websites where technologies meet creativity
-            </p>
+            </motion.p>
             
             {/* CTA Button */}
-            <div className="mt-[20px] lg:mt-[24px]">
+            <motion.div 
+              className="mt-[20px] lg:mt-[24px]"
+              variants={prefersReducedMotion ? {} : staggerItem}
+            >
               <Link 
                 href="#contact" 
                 className="inline-flex items-center gap-[8px] lg:gap-[10px] px-[12px] lg:px-[16px] py-[6px] lg:py-[8px] border border-[#C778DD] text-[#C778DD] text-[14px] lg:text-[16px] font-medium leading-[18px] lg:leading-[21px] hover:bg-[#C778DD] hover:text-white focus:bg-[#C778DD] focus:text-white focus:outline-none focus:ring-2 focus:ring-[#C778DD] focus:ring-offset-2 focus:ring-offset-[#282C33] transition-colors font-mono"
@@ -34,19 +59,30 @@ const Hero = () => {
               >
                 Contact me!!
               </Link>
-            </div>
+            </motion.div>
           </div>
           
           {/* Mobile Media Section */}
-          <div className="lg:hidden">
+          <motion.div 
+            className="lg:hidden"
+            variants={prefersReducedMotion ? {} : staggerItem}
+          >
             <Media />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Right Content Group */}
-        <div className="relative lg:absolute lg:left-[555px] lg:top-0 lg:w-[469px] lg:h-[386px] flex justify-center lg:justify-start">
+        <motion.div 
+          className="relative lg:absolute lg:left-[555px] lg:top-0 lg:w-[469px] lg:h-[386px] flex justify-center lg:justify-start"
+          variants={prefersReducedMotion ? {} : scaleVariants}
+          initial={prefersReducedMotion ? false : "hidden"}
+          animate={prefersReducedMotion ? false : "visible"}
+        >
           {/* Logo */}
-          <div className="hidden lg:block lg:absolute lg:left-0 lg:top-[84px] lg:w-[155px] lg:h-[155px]">
+          <motion.div 
+            className="hidden lg:block lg:absolute lg:left-0 lg:top-[84px] lg:w-[155px] lg:h-[155px]"
+            variants={prefersReducedMotion ? {} : staggerItem}
+          >
             <svg width="155" height="155" viewBox="0 0 155 155" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <g stroke="#C778DD" strokeWidth="1" fill="#FFFFFF">
                 <rect x="0" y="38.75" width="38.75" height="38.75"/>
@@ -61,10 +97,13 @@ const Hero = () => {
                 <rect x="116.25" y="116.25" width="38.75" height="38.75"/>
               </g>
             </svg>
-          </div>
+          </motion.div>
           
           {/* Profile Image Container */}
-          <div className="relative w-[280px] sm:w-[350px] lg:w-[457px] h-[240px] sm:h-[300px] lg:h-[386px] lg:absolute lg:left-[12px] lg:top-0">
+          <motion.div 
+            className="relative w-[280px] sm:w-[350px] lg:w-[457px] h-[240px] sm:h-[300px] lg:h-[386px] lg:absolute lg:left-[12px] lg:top-0"
+            variants={prefersReducedMotion ? {} : staggerItem}
+          >
             <Image
               src="/hero-profile-6942b3.png"
               alt="Portrait of Elias, web designer and front-end developer"
@@ -76,7 +115,11 @@ const Hero = () => {
             />
             
             {/* Decorative Dots - responsive positioning */}
-            <div className="absolute right-[-20px] sm:right-[-30px] lg:right-[88px] bottom-[20px] sm:bottom-[30px] lg:bottom-[140px] w-[60px] sm:w-[70px] lg:w-[84px] h-[60px] sm:h-[70px] lg:h-[84px] flex flex-col justify-between gap-[12px] sm:gap-[14px] lg:gap-[16px]" aria-hidden="true">
+            <motion.div 
+              className="absolute right-[-20px] sm:right-[-30px] lg:right-[88px] bottom-[20px] sm:bottom-[30px] lg:bottom-[140px] w-[60px] sm:w-[70px] lg:w-[84px] h-[60px] sm:h-[70px] lg:h-[84px] flex flex-col justify-between gap-[12px] sm:gap-[14px] lg:gap-[16px]" 
+              aria-hidden="true"
+              variants={prefersReducedMotion ? {} : staggerItem}
+            >
               {Array.from({ length: 5 }).map((_, rowIndex) => (
                 <div key={rowIndex} className="flex justify-between gap-[12px] sm:gap-[14px] lg:gap-[16px]">
                   {Array.from({ length: 5 }).map((_, colIndex) => (
@@ -84,17 +127,28 @@ const Hero = () => {
                   ))}
                 </div>
               ))}
-            </div>
-          </div>
-        </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
         
         {/* Status Indicator - responsive */}
-        <div className="relative lg:absolute lg:left-[586px] lg:top-[386px] w-full max-w-[402px] lg:w-[402px] bg-[#282C33] border border-[#ABB2BF] px-[6px] lg:px-[8px] py-[6px] lg:py-[8px] flex items-center gap-[8px] lg:gap-[10px] mt-4 lg:mt-0 mx-auto lg:mx-0">
-          <div className="w-[12px] lg:w-[16px] h-[12px] lg:h-[16px] bg-[#C778DD] flex-shrink-0" aria-hidden="true"></div>
+        <motion.div 
+          className="relative lg:absolute lg:left-[586px] lg:top-[386px] w-full max-w-[402px] lg:w-[402px] bg-[#282C33] border border-[#ABB2BF] px-[6px] lg:px-[8px] py-[6px] lg:py-[8px] flex items-center gap-[8px] lg:gap-[10px] mt-4 lg:mt-0 mx-auto lg:mx-0"
+          variants={prefersReducedMotion ? {} : staggerItem}
+          initial={prefersReducedMotion ? false : "hidden"}
+          animate={prefersReducedMotion ? false : "visible"}
+          transition={prefersReducedMotion ? {} : { delay: 0.8 }}
+        >
+          <motion.div 
+            className="w-[12px] lg:w-[16px] h-[12px] lg:h-[16px] bg-[#C778DD] flex-shrink-0" 
+            aria-hidden="true"
+            animate={prefersReducedMotion ? {} : { scale: [1, 1.2, 1] }}
+            transition={prefersReducedMotion ? {} : { duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          />
           <span className="text-[#ABB2BF] text-[14px] lg:text-[16px] leading-[18px] lg:leading-[21px] font-mono truncate">Currently working on Portfolio</span>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
