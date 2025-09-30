@@ -14,7 +14,7 @@ const Hero = () => {
 
   return (
     <motion.section 
-      className="bg-[#2b2f36] text-white min-h-[423px] py-8 lg:py-0" 
+      className=" text-white min-h-[423px] py-8 lg:py-0" 
       aria-label="Hero section"
       variants={prefersReducedMotion ? {} : heroVariants}
       initial={prefersReducedMotion ? false : "hidden"}

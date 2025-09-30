@@ -46,7 +46,13 @@ const Header = () => {
 
   return (
     <motion.header 
-      className="bg-[#282C33] text-white py-4 md:py-8 px-4 md:px-0 relative z-40"
+      className="text-white py-4 md:py-8 px-4 md:px-0 relative z-40"
+      style={{
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)',
+        borderBottom: '1px solid rgba(171, 178, 191, 0.1)',
+        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+      }}
       variants={prefersReducedMotion ? {} : navVariants}
       initial={prefersReducedMotion ? false : "hidden"}
       animate={prefersReducedMotion ? false : "visible"}
@@ -67,7 +73,7 @@ const Header = () => {
             height={16}
             className="w-4 h-4 md:w-4 md:h-4"
           />
-          <span className="text-white font-bold text-sm md:text-base leading-[1.312em]" style={{ fontFamily: 'Fira Code' }}>
+          <span className="text-white font-bold text-sm md:text-base leading-[1.312em] drop-shadow-sm" style={{ fontFamily: 'Fira Code', textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)' }}>
             Elias
           </span>
         </motion.div>
@@ -108,8 +114,8 @@ const Header = () => {
           <motion.div variants={prefersReducedMotion ? {} : staggerItem}>
             <Link 
               href="#home" 
-              className="flex text-base leading-[1.312em] hover:text-[#C778DD] transition-colors" 
-              style={{ fontFamily: 'Fira Code' }}
+              className="flex text-base leading-[1.312em] hover:text-[#C778DD] transition-colors drop-shadow-sm" 
+              style={{ fontFamily: 'Fira Code', textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)' }}
             >
               <span className="text-[#C778DD] font-medium">#</span>
               <span className="text-white font-medium">home</span>
@@ -118,8 +124,8 @@ const Header = () => {
           <motion.div variants={prefersReducedMotion ? {} : staggerItem}>
             <Link 
               href="#works" 
-              className="flex text-base leading-[1.312em] hover:text-[#C778DD] transition-colors" 
-              style={{ fontFamily: 'Fira Code' }}
+              className="flex text-base leading-[1.312em] hover:text-[#C778DD] transition-colors drop-shadow-sm" 
+              style={{ fontFamily: 'Fira Code', textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)' }}
             >
               <span className="text-[#C778DD] font-normal">#</span>
               <span className="text-[#ABB2BF] font-normal">works</span>
@@ -128,8 +134,8 @@ const Header = () => {
           <motion.div variants={prefersReducedMotion ? {} : staggerItem}>
             <Link 
               href="#about" 
-              className="flex text-base leading-[1.312em] hover:text-[#C778DD] transition-colors" 
-              style={{ fontFamily: 'Fira Code' }}
+              className="flex text-base leading-[1.312em] hover:text-[#C778DD] transition-colors drop-shadow-sm" 
+              style={{ fontFamily: 'Fira Code', textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)' }}
             >
               <span className="text-[#C778DD] font-normal">#</span>
               <span className="text-[#ABB2BF] font-normal">about-me</span>
@@ -138,8 +144,8 @@ const Header = () => {
           <motion.div variants={prefersReducedMotion ? {} : staggerItem}>
             <Link 
               href="#contact" 
-              className="flex text-base leading-[1.312em] hover:text-[#C778DD] transition-colors" 
-              style={{ fontFamily: 'Fira Code' }}
+              className="flex text-base leading-[1.312em] hover:text-[#C778DD] transition-colors drop-shadow-sm" 
+              style={{ fontFamily: 'Fira Code', textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)' }}
             >
               <span className="text-[#C778DD] font-normal">#</span>
               <span className="text-[#ABB2BF] font-normal">contacts</span>
@@ -167,7 +173,12 @@ const Header = () => {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.nav 
-            className="md:hidden fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-[#282C33] border-l border-[#ABB2BF]/20 z-40"
+            className="md:hidden fixed top-0 right-0 h-full w-80 max-w-[85vw] border-l border-[#ABB2BF]/20 z-40"
+            style={{
+              background: 'rgba(40, 44, 51, 0.95)',
+              backdropFilter: 'blur(15px)',
+              WebkitBackdropFilter: 'blur(15px)',
+            }}
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
